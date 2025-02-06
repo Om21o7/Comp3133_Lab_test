@@ -6,7 +6,7 @@ const http = require('http');
 
 const User = require('./models/User');
 const Message = require('./models/Message');
-const GroupMessage = require('./models/GroupMessage');  // Assuming you have a GroupMessage model
+const GroupMessage = require('./models/GroupMessage');  
 
 const authRoutes = require('./routes/authRoutes');
 const chatRoutes = require('./routes/chatRoutes');
@@ -31,41 +31,37 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
 
-// Serve static files (HTML, CSS, JS) from the 'frontend' folder
 app.use(express.static('frontend'));
 
-// Socket.io connection
+
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
-    // When a user joins a room
+
     socket.on('joinRoom', ({ room, from_user }) => {
         socket.join(room);
         console.log(`${from_user} joined room: ${room}`);
     
-        // Notify others in the room (except the user)
+
         socket.to(room).emit('systemMessage', `${from_user} joined ${room}`);
-    
-        // Send previous messages from database
+
         GroupMessage.find({ room }).then(messages => {
             socket.emit('previousMessages', messages);
         });
     });
 
-    // When a user sends a message
     socket.on('chatMessage', async ({ room, message, from_user }) => {
         const newMessage = new GroupMessage({ from_user, room, message, date_sent: new Date() });
-        await newMessage.save();  // Save the message to the database
+        await newMessage.save();  
 
-        // Emit the message to everyone in the room
+        
         io.to(room).emit('message', { from_user, message });
     });
 
-    // When a user leaves the room
     socket.on('leaveRoom', (room) => {
         socket.leave(room);
         console.log(`User ${socket.id} left room: ${room}`);
-        // Emit to the room that a user has left
+
         io.to(room).emit('message', { from_user: 'System', message: `${socket.id} left the room` });
     });
 
