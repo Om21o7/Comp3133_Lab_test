@@ -1,0 +1,258 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Glassmorphism Container */
+.container {
+    width: 400px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.container h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.container input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.container input:focus {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Buttons */
+.container button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    background: #ff7eb3;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.container button:hover {
+    background: #ff4d8c;
+}
+
+/* Links */
+.container p {
+    margin-top: 15px;
+}
+
+.container a {
+    color: #ff7eb3;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* Chat Container */
+.chat-container {
+    width: 100%;
+    height: 500px;
+    max-width: 700px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: white;
+}
+
+/* Chat Title */
+#chatRoomTitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffeb3b;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Room Selection */
+#roomSelect {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    outline: none;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+#roomSelect:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Messages */
+#messages {
+    height: 400px;
+    overflow-y: auto;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    font-size: 17px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.5s ease-in-out;
+    margin-bottom: 20px; /* Adds space between the messages and the input */
+}
+
+/* Chat Messages */
+.message {
+    padding: 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    max-width: 75%;
+    word-wrap: break-word;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+.message.incoming {
+    background: rgba(255, 255, 255, 0.5);
+    align-self: flex-start;
+    border-left: 4px solid #ffeb3b;
+}
+
+.message.outgoing {
+    background: #ff7eb3;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    border-right: 4px solid #ff4d8c;
+}
+
+/* Message Input */
+#messageInput {
+    width: 50%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    outline: none;
+    margin-bottom: 12px; /* Adds space between input and button */
+}
+
+/* Send Message Button */
+#sendMessage {
+    width: 18%;
+    padding: 14px;
+    background-color: #ffeb3b;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#sendMessage:hover {
+    background-color: #fbc02d;
+}
+
+/* Leave Room Button */
+#leaveRoom {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #ff4d4d;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+#leaveRoom:hover {
+    background-color: #cc0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chat-container, .container {
+        width: 95%;
+    }
+
+    #messageInput {
+        width: 70%;
+    }
+
+    #sendMessage {
+        width: 25%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
