@@ -1,0 +1,21 @@
+<div class="filter-container">
+  <!-- Filter by Launch Year -->
+  <input [(ngModel)]="year" placeholder="Filter by Launch Year" (ngModelChange)="applyFilters()" />
+
+  <!-- Filter by Launch Success -->
+  <select [(ngModel)]="launchSuccess" (ngModelChange)="applyFilters()">
+    <option value="">Launch Success</option>
+    <option value="successful">Successful</option>
+    <option value="failed">Failed</option>
+  </select>
+
+  <!-- Filter by Landing Success -->
+  <select [(ngModel)]="landingSuccess" (ngModelChange)="applyFilters()">
+    <option value="">Landing Success</option>
+    <option value="successful">Successful</option>
+    <option value="failed">Failed</option>
+  </select>
+
+  <!-- Reset Filters Button -->
+  <button (click)="resetFilters()">Reset Filters</button>
+</div>

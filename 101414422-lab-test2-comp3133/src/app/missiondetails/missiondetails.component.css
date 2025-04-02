@@ -1,0 +1,52 @@
+.details-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.details-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.details-card img {
+  width: 150px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.details-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.details-card a {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.details-card a:hover {
+  text-decoration: underline;
+}
+
+.back-button {
+  margin-bottom: 20px;
+  padding: 8px 15px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #125ca1;
+}

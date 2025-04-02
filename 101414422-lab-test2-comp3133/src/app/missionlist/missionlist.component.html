@@ -1,0 +1,21 @@
+
+<app-missionfilter (filterChanged)="onFiltersChange($event)"></app-missionfilter>
+
+
+<!-- Mission List -->
+<div class="mission-container">
+  <div *ngFor="let mission of filteredMissions" class="mission-card">
+    <img [src]="mission.links.mission_patch_small" alt="{{ mission.mission_name }}" class="patch">
+    <h3>
+      <a [routerLink]="['/mission', mission.flight_number]">
+        {{ mission.mission_name }} ({{ mission.launch_year }})
+      </a>
+    </h3>
+    <p><strong>Flight Number:</strong> {{ mission.flight_number }}</p>
+    <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} - {{ mission.rocket.rocket_type }}</p>
+    <p><strong>Details:</strong> {{ mission.details || 'No Details Available' }}</p>
+    <a *ngIf="mission.links.article_link" [href]="mission.links.article_link" target="_blank">Article</a> |
+    <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank">Wikipedia</a> |
+    <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank">Video</a>
+  </div>
+</div>
